@@ -14,6 +14,8 @@ class Taskscreen extends StatefulWidget {
 class _TaskscreenState extends State<Taskscreen> {
   TextEditingController addtasktextcontroller = TextEditingController();
 
+  late String newtodotext;
+
   showalertdialog(BuildContext context) {
     showPlatformDialog(
       context: context,
@@ -32,6 +34,9 @@ class _TaskscreenState extends State<Taskscreen> {
             crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
               TextField(
+                onChanged: (value) {
+                  newtodotext = value;
+                },
                 maxLines: 2,
                 minLines: 1,
                 keyboardType: TextInputType.multiline,
@@ -47,24 +52,44 @@ class _TaskscreenState extends State<Taskscreen> {
               SizedBox(
                 height: 20,
               ),
-              Container(
-                decoration: addbuttonboxdecoration,
-                child: Padding(
-                  padding: const EdgeInsets.all(2.0),
-                  child: TextButton.icon(
-                    onPressed: () {
-                      setState(() {
-                        Navigator.pop(context);
-                      });
-                    },
-                    icon: Icon(
-                      (Icons.add),
-                      size: 40,
-                      color: Colors.white,
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    addtasktextcontroller.clear();
+                    tasks.add(Task(name: newtodotext));
+                    Navigator.pop(context);
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  decoration: addbuttonboxdecoration,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        'Add',
+                        style: bottomcontainerbuttontextstyle,
+                      ),
                     ),
-                    label: Text(
-                      'ADD',
-                      style: bottomcontainerbuttontextstyle,
+                  ),
+                ),
+              ),
+              GestureDetector(
+                onTap: () {
+                  setState(() {
+                    Navigator.pop(context);
+                  });
+                },
+                child: Container(
+                  margin: EdgeInsets.all(5),
+                  decoration: addbuttonboxdecoration,
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: Center(
+                      child: Text(
+                        'cancel',
+                        style: bottomcontainerbuttontextstyle,
+                      ),
                     ),
                   ),
                 ),
@@ -80,6 +105,7 @@ class _TaskscreenState extends State<Taskscreen> {
     Task(name: 'Buy milk'),
     Task(name: 'Buy tatti'),
   ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -88,10 +114,6 @@ class _TaskscreenState extends State<Taskscreen> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           showalertdialog(context);
-          // showModalBottomSheet(
-          //   context: context,
-          //   builder: (context) => Bottomcontainer(),
-          // );
         },
         child: Icon(Icons.add),
         backgroundColor: Colors.lightBlue,
@@ -122,7 +144,7 @@ class _TaskscreenState extends State<Taskscreen> {
                     style: mainTodoeytextstyle,
                   ),
                   Text(
-                    '12 Tasks',
+                    '${tasks.length} Tasks',
                     style: nooftaskstextstyle,
                   ),
                 ],
