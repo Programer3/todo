@@ -104,6 +104,21 @@ class _TaskscreenState extends State<Taskscreen> {
   List<Task> tasks = [
     Task(name: 'Buy milk'),
     Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
+    Task(name: 'Buy tatti'),
   ];
 
   @override

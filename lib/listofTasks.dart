@@ -17,13 +17,19 @@ class _ListofTasksState extends State<ListofTasks> {
       child: ListView.builder(
         itemBuilder: (context, index) {
           return Tasktile(
-              ischecked: widget.tasks[index].isdone,
-              taskTitle: widget.tasks[index].name,
-              checkboxcallback: (bool? checkboxstate) {
-                setState(() {
-                  widget.tasks[index].toggleDone();
-                });
+            ischecked: widget.tasks[index].isdone,
+            taskTitle: widget.tasks[index].name,
+            checkboxcallback: (bool? checkboxstate) {
+              setState(() {
+                widget.tasks[index].toggleDone();
               });
+            },
+            setstate: () {
+              setState(() {
+                widget.tasks.removeAt(index);
+              });
+            },
+          );
         },
         itemCount: widget.tasks.length,
       ),
