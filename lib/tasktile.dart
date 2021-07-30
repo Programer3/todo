@@ -15,7 +15,7 @@ class Tasktile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
-      leading: TextButton(onPressed: setstate, child: Text('Delete')),
+      leading: IconButton(onPressed: setstate, icon: Icon(Icons.delete)),
       title: Text(
         taskTitle,
         style: TextStyle(

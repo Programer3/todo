@@ -102,23 +102,7 @@ class _TaskscreenState extends State<Taskscreen> {
   }
 
   List<Task> tasks = [
-    Task(name: 'Buy milk'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
-    Task(name: 'Buy tatti'),
+    Task(name: 'Add Tasks here Like this'),
   ];
 
   @override
@@ -158,9 +142,17 @@ class _TaskscreenState extends State<Taskscreen> {
                     'Todoey',
                     style: mainTodoeytextstyle,
                   ),
-                  Text(
-                    '${tasks.length} Tasks',
-                    style: nooftaskstextstyle,
+                  TextButton(
+                    onPressed: () {
+                      setState(() {
+                        print(
+                            'pressed'); ////refresh this widget and use provider
+                      });
+                    },
+                    child: Text(
+                      '${tasks.length} Tasks',
+                      style: nooftaskstextstyle,
+                    ),
                   ),
                 ],
               ),
